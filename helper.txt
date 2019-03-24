@@ -1,0 +1,18 @@
+So if you run "sudo yarn start or sudo yarn android" and in the android app you get the error missing module ".index"(or any missing modules) do the following:
+
+1. open terminal to the react-native app directory eg mobile(that contain the node_modules)
+2. run this command "watchman watch-del-all"
+3. sudo rm -rf node_modules && sudo yarn
+4. sudo rm -rf /tmp/metro-bundler-cache-*
+5. sudo rm -rf /tmp/haste-map-react-native-packager-*
+6. (optional) if you are using symlink(for configuring a monorepo) run "sudo wml start" to start watching for changes as you edit the file, so that it immediately pushes that file to your mobile app node_modules folder eg node_modules/@app/common.
+7. sudo yarn start or sudo yarn android. 
+
+
+
+This is not part of the above steps!!
+
+to bring our files over
+
+sudo wml add ../common ./node_modules/@app/common in the mobile directory
+sudo wml start - to watch for changes
